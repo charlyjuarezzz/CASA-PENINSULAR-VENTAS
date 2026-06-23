@@ -326,8 +326,8 @@ body{background:var(--bg);color:var(--ink);font-family:'Epilogue',sans-serif;min
     <div class="dg-grid">
       <div class="dg-card">
         <div class="dg-card-title">📊 Venta normal</div>
-        <div class="dg-big-val" id="dg-venta-normal">$60,000</div>
-        <div class="dg-sub">Meta: $75,000</div>
+        <div class="dg-big-val" id="dg-venta-normal">$49,500</div>
+        <div class="dg-sub">Meta: $58,500</div>
         <div class="dg-bar-wrap"><div class="dg-bar" id="dg-bar-normal" style="width:0%;background:var(--gold);"></div></div>
         <div class="dg-bar-lbl"><span id="dg-pct-normal">0%</span><span>100%</span></div>
       </div>
@@ -341,7 +341,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Epilogue',sans-serif;min
     </div>
     <div class="grand-total">
       <div class="gt-lbl">💰 TOTAL NEGOCIO ESTA SEMANA</div>
-      <div class="gt-val" id="dg-grand-total">$60,000</div>
+      <div class="gt-val" id="dg-grand-total">$49,500</div>
       <div class="gt-sub" id="dg-grand-sub">Normal + Mundial</div>
     </div>
     <div class="kpi-grid three">
@@ -376,12 +376,12 @@ body{background:var(--bg);color:var(--ink);font-family:'Epilogue',sans-serif;min
     </div>
     <div class="grand-total">
       <div class="gt-lbl">💰 Total negocio esta semana</div>
-      <div class="gt-val" id="ger-grand-total">$60,000</div>
+      <div class="gt-val" id="ger-grand-total">$49,500</div>
       <div class="gt-sub" id="ger-grand-sub">Normal + Palancas + Mundial</div>
     </div>
     <div class="kpi-grid">
       <div class="kpi-card ac-gold"><div class="kc-lbl">🏪 Venta Normal</div><div class="kc-val" id="ger-venta">—</div><div class="kc-sub" id="ger-vn-sub">Captura encargado</div></div>
-      <div class="kpi-card ac-green"><div class="kc-lbl">vs Objetivo $60K</div><div class="kc-val" id="ger-inc">—</div><div class="kc-pill p-neu" id="ger-inc-pill">Sin datos</div></div>
+      <div class="kpi-card ac-green"><div class="kc-lbl">vs Objetivo $9K</div><div class="kc-val" id="ger-inc">—</div><div class="kc-pill p-neu" id="ger-inc-pill">Sin datos</div></div>
     </div>
     <div class="kpi-grid">
       <div class="kpi-card ac-beer"><div class="kc-lbl">🦈 Palancas equipo</div><div class="kc-val" id="ger-pal-total">$0</div><div class="kc-sub" id="ger-pal-sub">0% del extra</div></div>
@@ -389,7 +389,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Epilogue',sans-serif;min
     </div>
     <div class="kpi-grid three">
       <div class="kpi-card ac-blue"><div class="kc-lbl">% Avance</div><div class="kc-val" id="ger-pct">0%</div><div class="kc-sub">Meta +30%</div></div>
-      <div class="kpi-card ac-amber"><div class="kc-val" id="ger-vspe" style="font-size:1rem;">+$10K</div><div class="kc-sub">vs PE $104K</div></div>
+      <div class="kpi-card ac-amber"><div class="kc-val" id="ger-vspe" style="font-size:1rem;">+$10K</div><div class="kc-sub">vs PE $37.5K</div></div>
       <div class="kpi-card ac-beer"><div class="kc-lbl">🏆 Mundial</div><div class="kc-val" id="ger-mundial-kpi">$0</div><div class="kc-sub">extra</div></div>
     </div>
     <div id="ger-week-actions"></div>
@@ -458,7 +458,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Epilogue',sans-serif;min
     </div>
     <div class="total-banner">
       <div class="tot-row"><span class="tot-lbl">Venta total restaurante</span><span class="kc-pill p-neu" id="enc-total-pill">0%</span></div>
-      <div class="tot-row"><span class="tot-val" id="enc-total-rest">$60,000</span></div>
+      <div class="tot-row"><span class="tot-val" id="enc-total-rest">$49,500</span></div>
       <div class="tot-divider"></div>
       <div class="tot-row"><span class="tot-lbl">🏪 Venta normal</span><span style="font-size:.82rem;font-weight:600;" id="enc-vn-row">$0</span></div>
       <div class="tot-row"><span class="tot-lbl">🦈 Palancas equipo</span><span style="font-size:.82rem;font-weight:600;" id="enc-pal-row">$0</span></div>
@@ -499,7 +499,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Epilogue',sans-serif;min
         <input type="number" id="enc-venta-normal-inp" placeholder="0" min="0"
           style="flex:1;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,215,0,.3);border-radius:8px;color:#fff;padding:8px 10px;font-size:1rem;font-weight:700;"
           oninput="calcEnc()">
-        <span style="font-size:.7rem;opacity:.6;">objetivo $60,000</span>
+        <span style="font-size:.7rem;opacity:.6;">objetivo $49,500</span>
       </div>
       <div id="enc-vn-pill" style="margin-top:6px;font-size:.7rem;color:rgba(255,255,255,.5);">Sin datos aún</div>
     </div>
@@ -703,8 +703,8 @@ function showTab(id){
 }
 
 // Week nav stubs
-var week=1;
-function changeWeek(d){week=Math.max(1,Math.min(13,week+d));updateWeekUI();if(window.loadWeekFn)loadWeekFn(week);}
+var week=1;window.week=1;
+function changeWeek(d){week=Math.max(1,Math.min(13,week+d));window.week=week;updateWeekUI();if(window.loadWeekFn)loadWeekFn(week);}
 function updateWeekUI(){
   if(!window.SEMANAS||!window.SEMANAS[week-1])return;
   var c=window.SEMANAS[week-1];
@@ -929,7 +929,7 @@ function subscribeWeek(w){
   });
 }
 
-const getW=()=>localData['w'+week]||{};
+const getW=()=>localData['w'+(window.week||1)]||{};
 window.getW=getW;
 window.setMundialUserData=(uid,pidx,key,val,indVal)=>{
   if(!localData['w'+week])localData['w'+week]={};
@@ -972,7 +972,7 @@ function calcPartidoData(p,d){
   return{ingreso,cervezas,cartones:Math.ceil(cart),costo,util:ingreso-costo};
 }
 function getMundialTotales(){
-  const partidos=PARTIDOS[week]||[];const mdata=getMundialW();
+  const partidos=PARTIDOS[(window.week||1)]||[];const mdata=getMundialW();
   let tI=0,tC=0,tCart=0,tCosto=0;
   partidos.forEach((p,i)=>{
     [...getTeamUsers(),users.find(u=>u.role==='enc')].filter(Boolean).forEach(u=>{
@@ -983,7 +983,7 @@ function getMundialTotales(){
   return{tI,tC,tCart,tCosto,tUtil:tI-tCosto};
 }
 function calcProyMundial(){
-  return (PARTIDOS[week]||[]).reduce((s,p)=>{
+  return (PARTIDOS[(window.week||1)]||[]).reduce((s,p)=>{
     return s+(p.tipo==='premium'?(p.proy_cubetas||0)*P_CUBETA+(p.proy_ind||0)*P_IND:((p.proy_il||0)*(p.tipo==='medio'?P_IL2H:P_ILMT)+(p.proy_ind||0)*P_IND));
   },0);
 }
@@ -1006,7 +1006,7 @@ async function loadSemanasStatus(){
 async function saveSemanasStatus(){
   try{await setDoc(semanasStatusRef(),semanasStatus,{merge:false});}catch(e){}
 }
-function isWeekClosed(w){return semanasStatus['w'+(w||week)]?.closed===true;}
+function isWeekClosed(w){return semanasStatus['w'+(w||(window.week||1))]?.closed===true;}
 function isCurrWeekClosed(){return isWeekClosed(week);}
 
 // Register all comment/status functions globally
@@ -1424,7 +1424,7 @@ function renderGerRevDetalle(){
 function renderGerMundial(){
   const div=document.getElementById('ger-mundial-section');if(!div)return;
   if(!window.SEMANAS[week-1].mundial){div.innerHTML=`<div style="text-align:center;padding:20px;color:var(--ink-dim);font-size:.78rem;">🌍 Mundial arranca Semana 2 · 11 Jun</div>`;return;}
-  const partidos=PARTIDOS[week]||[];if(!partidos.length){div.innerHTML='';return;}
+  const partidos=PARTIDOS[(window.week||1)]||[];if(!partidos.length){div.innerHTML='';return;}
   const mundial=getMundialTotales();
   let html=`<div class="sec-title"><span>🏆</span>Mundial · Consolidado</div>
     <div class="mundial-hdr">
@@ -1592,7 +1592,7 @@ window.renderEncEquipo=renderEncEquipo;
 function renderEncMundial(){
   const div=document.getElementById('enc-mundial-section');if(!div)return;
   if(!window.SEMANAS[week-1].mundial){div.innerHTML='';return;}
-  const partidos=PARTIDOS[week]||[];if(!partidos.length){div.innerHTML='';return;}
+  const partidos=PARTIDOS[(window.week||1)]||[];if(!partidos.length){div.innerHTML='';return;}
   const mdata=getMundialW();
   const encUser=users.find(u=>u.role==='enc');
   const encId=encUser?encUser.id:'enc';
@@ -1654,7 +1654,7 @@ function renderEncMundial(){
 window.renderEncMundial=renderEncMundial;
 
 window.calcEncMundial=()=>{
-  const partidos=PARTIDOS[week]||[];
+  const partidos=PARTIDOS[(window.week||1)]||[];
   const encUser=users.find(u=>u.role==='enc');
   const allU=[...getTeamUsers(),encUser].filter(Boolean);
   partidos.forEach((p,i)=>{
@@ -1720,7 +1720,7 @@ window.calcMesReviews=()=>{
 function renderMesMundial(){
   const div=document.getElementById('mes-mundial-section');if(!div)return;
   if(!currentUser||(currentUser.role!=='mes'&&currentUser.role!=='bar')||!window.SEMANAS||!window.SEMANAS[week-1]||!(window.SEMANAS[week-1]||{}).mundial){div.innerHTML='';return;}
-  const partidos=PARTIDOS[week]||[];if(!partidos.length){div.innerHTML='';return;}
+  const partidos=PARTIDOS[(window.week||1)]||[];if(!partidos.length){div.innerHTML='';return;}
   const mid=currentUser.id;const mdata=getMundialW();
   const _isArtu=false;
   const _isFern=false;
@@ -1791,7 +1791,7 @@ setTimeout(function(){
 
 window.calcMesMundialLive=()=>{
   if(!currentUser||(currentUser.role!=='mes'&&currentUser.role!=='bar'))return;
-  const mid=currentUser.id;const partidos=PARTIDOS[week]||[];
+  const mid=currentUser.id;const partidos=PARTIDOS[(window.week||1)]||[];
   // Update local display
   partidos.forEach((p,i)=>{
     const mv=parseFloat(document.getElementById('mes-m-'+mid+'-p'+i+'-main')?.value)||0;
@@ -1866,7 +1866,7 @@ window.guardar=async()=>{
     PALANCAS.forEach(p=>{const el=document.getElementById('mp-inp-'+p.id);if(el)mes[mid][p.id]=parseFloat(el.value)||0;});
     const rEl=document.getElementById('mes-rev-inp');if(rEl)mes[mid].reviews=parseFloat(rEl.value)||0;
     mundial.por_usuario[mid]=mundial.por_usuario[mid]||{};
-    (PARTIDOS[week]||[]).forEach((p,i)=>{
+    (PARTIDOS[(window.week||1)]||[]).forEach((p,i)=>{
       mundial.por_usuario[mid]['p'+i]=mundial.por_usuario[mid]['p'+i]||{};
       const mainEl=document.getElementById(`mes-m-${mid}-p${i}-main`);const indEl=document.getElementById(`mes-m-${mid}-p${i}-ind`);
       if(p.tipo==='premium'){if(mainEl)mundial.por_usuario[mid]['p'+i].cubetas=parseFloat(mainEl.value)||0;}
@@ -1881,7 +1881,7 @@ window.guardar=async()=>{
     const allU=[...getTeamUsers(),encUser].filter(Boolean);
     allU.forEach(u=>{
       mundial.por_usuario[u.id]=mundial.por_usuario[u.id]||{};
-      (PARTIDOS[week]||[]).forEach((p,i)=>{
+      (PARTIDOS[(window.week||1)]||[]).forEach((p,i)=>{
         mundial.por_usuario[u.id]['p'+i]=mundial.por_usuario[u.id]['p'+i]||{};
         const mainEl=document.getElementById(`enc-m-${u.id}-p${i}`);const indEl=document.getElementById(`enc-m-ind-${u.id}-p${i}`);
         if(mainEl){if(p.tipo==='premium')mundial.por_usuario[u.id]['p'+i].cubetas=parseFloat(mainEl.value)||0;else mundial.por_usuario[u.id]['p'+i].personas=parseFloat(mainEl.value)||0;}
