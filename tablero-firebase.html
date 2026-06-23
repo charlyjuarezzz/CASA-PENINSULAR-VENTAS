@@ -974,7 +974,7 @@ function subscribeWeek(w){
   });
 }
 
-const getW=()=>localData['w'+week]||{};
+const getW=()=>localData['w'+(window.week||1)]||{};
 window.getW=getW;
 window.setMundialUserData=(uid,pidx,key,val,indVal)=>{
   if(!localData['w'+week])localData['w'+week]={};
@@ -1017,7 +1017,7 @@ function calcPartidoData(p,d){
   return{ingreso,cervezas,cartones:Math.ceil(cart),costo,util:ingreso-costo};
 }
 function getMundialTotales(){
-  const partidos=PARTIDOS[week]||[];const mdata=getMundialW();
+  const partidos=PARTIDOS[(window.week||1)]||[];const mdata=getMundialW();
   let tI=0,tC=0,tCart=0,tCosto=0;
   partidos.forEach((p,i)=>{
     [...getTeamUsers(),users.find(u=>u.role==='enc')].filter(Boolean).forEach(u=>{
@@ -1028,7 +1028,7 @@ function getMundialTotales(){
   return{tI,tC,tCart,tCosto,tUtil:tI-tCosto};
 }
 function calcProyMundial(){
-  return (PARTIDOS[week]||[]).reduce((s,p)=>{
+  return (PARTIDOS[(window.week||1)]||[]).reduce((s,p)=>{
     return s+(p.tipo==='premium'?(p.proy_cubetas||0)*P_CUBETA+(p.proy_ind||0)*P_IND:((p.proy_il||0)*(p.tipo==='medio'?P_IL2H:P_ILMT)+(p.proy_ind||0)*P_IND));
   },0);
 }
@@ -1469,7 +1469,7 @@ function renderGerRevDetalle(){
 function renderGerMundial(){
   const div=document.getElementById('ger-mundial-section');if(!div)return;
   if(!window.SEMANAS[week-1].mundial){div.innerHTML=`<div style="text-align:center;padding:20px;color:var(--ink-dim);font-size:.78rem;">🌍 Mundial arranca Semana 2 · 11 Jun</div>`;return;}
-  const partidos=PARTIDOS[week]||[];if(!partidos.length){div.innerHTML='';return;}
+  const partidos=PARTIDOS[(window.week||1)]||[];if(!partidos.length){div.innerHTML='';return;}
   const mundial=getMundialTotales();
   let html=`<div class="sec-title"><span>🏆</span>Mundial · Consolidado</div>
     <div class="mundial-hdr">
@@ -1637,7 +1637,7 @@ window.renderEncEquipo=renderEncEquipo;
 function renderEncMundial(){
   const div=document.getElementById('enc-mundial-section');if(!div)return;
   if(!window.SEMANAS[week-1].mundial){div.innerHTML='';return;}
-  const partidos=PARTIDOS[week]||[];if(!partidos.length){div.innerHTML='';return;}
+  const partidos=PARTIDOS[(window.week||1)]||[];if(!partidos.length){div.innerHTML='';return;}
   const mdata=getMundialW();
   const encUser=users.find(u=>u.role==='enc');
   const encId=encUser?encUser.id:'enc';
@@ -1699,7 +1699,7 @@ function renderEncMundial(){
 window.renderEncMundial=renderEncMundial;
 
 window.calcEncMundial=()=>{
-  const partidos=PARTIDOS[week]||[];
+  const partidos=PARTIDOS[(window.week||1)]||[];
   const encUser=users.find(u=>u.role==='enc');
   const allU=[...getTeamUsers(),encUser].filter(Boolean);
   partidos.forEach((p,i)=>{
@@ -1765,7 +1765,7 @@ window.calcMesReviews=()=>{
 function renderMesMundial(){
   const div=document.getElementById('mes-mundial-section');if(!div)return;
   if(!currentUser||(currentUser.role!=='mes'&&currentUser.role!=='bar')||!window.SEMANAS||!window.SEMANAS[week-1]||!(window.SEMANAS[week-1]||{}).mundial){div.innerHTML='';return;}
-  const partidos=PARTIDOS[week]||[];if(!partidos.length){div.innerHTML='';return;}
+  const partidos=PARTIDOS[(window.week||1)]||[];if(!partidos.length){div.innerHTML='';return;}
   const mid=currentUser.id;const mdata=getMundialW();
   const _isArtu=mid==='artu';
   const _isFern=mid==='fern';
@@ -1836,7 +1836,7 @@ setTimeout(function(){
 
 window.calcMesMundialLive=()=>{
   if(!currentUser||(currentUser.role!=='mes'&&currentUser.role!=='bar'))return;
-  const mid=currentUser.id;const partidos=PARTIDOS[week]||[];
+  const mid=currentUser.id;const partidos=PARTIDOS[(window.week||1)]||[];
   // Update local display
   partidos.forEach((p,i)=>{
     const mv=parseFloat(document.getElementById('mes-m-'+mid+'-p'+i+'-main')?.value)||0;
@@ -1911,7 +1911,7 @@ window.guardar=async()=>{
     PALANCAS.forEach(p=>{const el=document.getElementById('mp-inp-'+p.id);if(el)mes[mid][p.id]=parseFloat(el.value)||0;});
     const rEl=document.getElementById('mes-rev-inp');if(rEl)mes[mid].reviews=parseFloat(rEl.value)||0;
     mundial.por_usuario[mid]=mundial.por_usuario[mid]||{};
-    (PARTIDOS[week]||[]).forEach((p,i)=>{
+    (PARTIDOS[(window.week||1)]||[]).forEach((p,i)=>{
       mundial.por_usuario[mid]['p'+i]=mundial.por_usuario[mid]['p'+i]||{};
       const mainEl=document.getElementById(`mes-m-${mid}-p${i}-main`);const indEl=document.getElementById(`mes-m-${mid}-p${i}-ind`);
       if(p.tipo==='premium'){if(mainEl)mundial.por_usuario[mid]['p'+i].cubetas=parseFloat(mainEl.value)||0;}
@@ -1926,7 +1926,7 @@ window.guardar=async()=>{
     const allU=[...getTeamUsers(),encUser].filter(Boolean);
     allU.forEach(u=>{
       mundial.por_usuario[u.id]=mundial.por_usuario[u.id]||{};
-      (PARTIDOS[week]||[]).forEach((p,i)=>{
+      (PARTIDOS[(window.week||1)]||[]).forEach((p,i)=>{
         mundial.por_usuario[u.id]['p'+i]=mundial.por_usuario[u.id]['p'+i]||{};
         const mainEl=document.getElementById(`enc-m-${u.id}-p${i}`);const indEl=document.getElementById(`enc-m-ind-${u.id}-p${i}`);
         if(mainEl){if(p.tipo==='premium')mundial.por_usuario[u.id]['p'+i].cubetas=parseFloat(mainEl.value)||0;else mundial.por_usuario[u.id]['p'+i].personas=parseFloat(mainEl.value)||0;}
